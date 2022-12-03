@@ -88,3 +88,11 @@ To use this script in p5.js, you will need to include the p5.js library in your 
             z: random(width)
           });
 ```
+
+> Give me the example code for an anchor tag that will take the user up one level in the site path
+
+Here is an example of an `a` element, or anchor tag, that can be used to take the user up one level in the site path:
+
+```HTML
+<a href="../">Up one level</a>
+```

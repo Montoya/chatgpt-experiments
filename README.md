@@ -27,3 +27,106 @@ Here is an example of a simple webpage with a list of links:
 This webpage consists of a simple HTML document with a title element, a h1 element, and an unordered list containing a few a elements. Each a element represents a link, and it has an href attribute that specifies the URL of the linked page. When the user clicks on a link, their web browser will navigate to the specified URL.
 
 To create a similar webpage, you will need to create an HTML document and include the desired content in the body element. You can use the ul and li elements to create an unordered list, and you can use the a element to create links. Be sure to include an href attribute on each a element to specify the URL of the linked page.
+
+> Give me CSS to make the page content appear in a smaller box in the center of the page
+
+Here is an example of CSS that can be used to make the content of the previous HTML document appear in a smaller box in the center of the page:
+
+```CSS
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#box {
+  width: 600px;
+  padding: 30px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0052cc;
+}
+```
+
+> Update the previous CSS to use the Google Webfont Lato
+
+Here is an updated version of the previous CSS that uses the Google Webfont Lato:
+
+```CSS
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+
+body {
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+...
+```
+
+> Give CSS to make list items have a diamond bullet
+
+Here is an example of CSS that can be used to style the li elements in an unordered list to have a diamond bullet:
+
+```CSS
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 25px;
+}
+
+li::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border: solid #333;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+```
+
+> Give me the hex code for a background color that is like a clear sky
+
+The hex code for a color that is like a clear sky is #87CEEB. This color is a light shade of blue that is often associated with the sky on a clear day. You can use this hex code to set the background color of an element in your HTML document using the background-color property in CSS. For example:
+
+```CSS
+body {
+  background-color: #87CEEB;
+}
+```
