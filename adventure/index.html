@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Text Adventure</title>
+
+    <style>
+      /* Some basic styling for the page */
+
+      body {
+        font-family: sans-serif;
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      button {
+        display:inline-block;
+        width: auto;
+        height: 50px;
+        padding: 10px;
+        margin: 5px;
+        border: none;
+        background-color: #eee;
+        font-size: 24px;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      button:focus {
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Text Adventure</h1>
+    <p>🌲 You are standing in a dark forest. You see a path leading north and a path leading east.</p>
+
+    <button id="north">🌲 Go North</button>
+    <button id="east">🌲 Go East</button>
+
+    <script>
+      // Create an object to represent the game state
+      const state = {
+        // The starting location of the player
+        location: 'forest',
+
+        // The locations in the game and their descriptions
+        locations: {
+          forest: {
+            description: '🌲 You are standing in a dark forest. You see a path leading north and a path leading east.',
+            directions: {
+              north: 'clearing',
+              east: 'river'
+            }
+          },
+          clearing: {
+            description: '🏡 You are standing in a clearing. In the center of the clearing, you see a small cottage. There is smoke coming from the chimney and the door is slightly ajar.',
+            directions: {
+              enter: 'insideCottage',
+              turnBack: 'forest'
+            }
+          },
+          river: {
+            description: '🏞 You are standing at the edge of a river. The water is flowing quickly and there is a small boat tied up on the shore.',
+            directions: {
+              cross: 'otherSide',
+              turnBack: 'forest'
+            }
+          }
+        }
+      };
+
+      // Get a reference to the body of the document
+      const body = document.querySelector('body');
+
+      // Helper function to update the page with the current state of the game
+      function update() {
+        // Get the current location and its description
+        const location = state.locations[state.location];
+        const description = location ? location.description : 'You have exited the bounds of this world. You can start over if you want.';
+
+        // Create HTML elements for the description and the buttons
+        const p = document.createElement('p');
+        p.innerText = description;
+        const buttons = document.createElement('div');
+
+        // Create a button for each direction in the current location
+        if (location) {
+          for (const direction in location.directions) {
+            const button = document.createElement('button');
+            button.id = direction;
+            button.innerText = direction;
+            buttons.appendChild(button);
+          }
+        } else {
+          // Create a single button to start the game over from the first location
+          const startOverButton = document.createElement('button');
+          startOverButton.id = 'startOver';
+          startOverButton.innerText = 'Start Over';
+          buttons.appendChild(startOverButton);
+          startOverButton.addEventListener('click', e => {
+            // Update the game state to start the game over
+            state.location = 'forest';
+
+            // Update the page with the new game state
+            update();
+          });
+        }
+
+        // Clear the body of the document and add the description and buttons
+        body.innerHTML = '';
+        body.appendChild(p);
+        body.appendChild(buttons);
+
+        // Add event listeners to the buttons to handle clicks
+        if (location) {
+          for (const direction in location.directions) {
+            const button = document.getElementById(direction);
+            button.addEventListener('click', e => {
+              // Update the game state based on the clicked button
+              const nextLocation = location.directions[direction];
+              if (nextLocation) {
+                state.location = nextLocation;
+              } else {
+                // Show a message and keep the location the same if the clicked button does not have a location to go to
+                p.innerText = 'You cannot go that way.';
+                state.location = location;
+              }
+
+              // Update the page with the new game state
+              update();
+            });
+          }
+        }
+      }
+
+      // Initialize the page with the starting game state
+      update();
+    </script>
+  </body>
+</html>
