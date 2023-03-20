@@ -718,4 +718,4 @@ I hope this helps! Let me know if you have any other questions.
 
 ---
 
-_At this point I cannot get ChatGPT-3 to give me the correct response for the combined CSS generated so far, so I am going to just combine the previous responses to get the right result. Also, the .hidden class should use `visibility:hidden` instead of `display:none` and `.content` should be wider so I'm going to make these changes and end this experiment._
+_At this point I cannot get ChatGPT-3 to give me the correct response for the combined CSS generated so far, so I am going to just combine the previous responses to get the right result. Also, the .hidden class should use `visibility:hidden` instead of `display:none` and `.content` should be wider so I'm going to make these changes and end this experiment. The resulting webpage can be viewed here: [montoya.github.io/chatgpt-experiments/win95/](https://montoya.github.io/chatgpt-experiments/win95/)._
